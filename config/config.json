@@ -9,5 +9,14 @@
 				}
 			}
 		}
+	},
+	"session": {
+		"secret": "BlackSunEmpire",
+		"key": "sid",
+		"cookie": {
+			"path": "/",
+			"httpOnly": true,
+			"maxAge": null
+		}
 	}
 }
