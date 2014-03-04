@@ -3,7 +3,7 @@ var http = require('http');
 var path = require('path');
 var config = require('./config');
 var log = require('./libs/log')(module);
-var mongoose = require('./libs/mongoose');
+var mongoose = require('mongoose');
 var HttpError = require('./error').HttpError;
 
 var app = express();
