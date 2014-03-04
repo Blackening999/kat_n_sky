@@ -1,7 +1,7 @@
 {
-	"port": 5000, //3000 local
+	"port": 5000,
 	"mongoose" : {
-		"uri": "blackening:farcry11@ds033449.mongolab.com:33449/chat-app",//"mongodb://localhost/chat",
+		"uri": "blackening:farcry11@ds033449.mongolab.com:33449/chat-app",
 		"options": {
 			"server": {
 				"socketOptions": {
