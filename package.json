@@ -12,7 +12,7 @@
 		"example",
 		"heroku"
 	],
-	"author": "Vladimir Katansky",
+	"author": "vladimir-katansky",
 	"license": "MIT",
 	"scripts": {
 		"start": "node app.js"
