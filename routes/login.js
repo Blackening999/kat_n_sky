@@ -13,12 +13,12 @@ exports.post = function(req, res, next) {
 
 	User.authorize(username, password, function(err, user) {
 		if (err) {
-      if (err instanceof AuthError) {
-        return next(new HttpError(403, err.message));
-      } else {
-        return next(err);
-      }
-    }
+	      if (err instanceof AuthError) {
+	        return next(new HttpError(403, err.message));
+	      } else {
+		    return next(err);
+	      }
+	    }
 
 		req.session.user = user._id;
 		res.send({});//User info --> User find etc. Refactor here

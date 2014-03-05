@@ -58,11 +58,12 @@ schema.statics.authorize = function(username, password, callback) {
 				}
 			} else {
 				// registration should be here
-				var user = new User({username: username, password: password});
-				user.save(function(err) {
-					if (err) return callback(err);
-					callback(null, user);
-				});
+				callback(null, null);
+//				var user = new User({username: username, password: password});
+//				user.save(function(err) {
+//					if (err) return callback(err);
+//					callback(null, user);
+//				});
 			}
 		}
 	], callback);
