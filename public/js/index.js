@@ -1,6 +1,3 @@
-/**
- * Created by Blackening on 3/7/14.
- */
 $(document).ready(function() {
 	var navPanel = $('.nav.main-navigation');
 
