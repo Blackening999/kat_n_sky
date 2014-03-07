@@ -12,6 +12,7 @@ $(document).ready(function() {
 		})
 		.on('leave', function(username) {
 			printStatus(username + " left chat", "leave");
+			delete users[username];
 		})
 		.on('join', function(username) {
 			users[username] = attachColor();
@@ -57,7 +58,7 @@ $(document).ready(function() {
 
 	function printMessage(username, message, type) {
 		if (type == "message") {
-			$("<li style='color: '" + users[username] + "'>").text(username + "> " + message).appendTo(ul);
+			$('<li style="color: "' + users[username] + '">').text(username + "> " + message).appendTo(ul);
 		} else {
 			$('<li class="' + getMsgColor(type) + '">').text(username + "> " + message).appendTo(ul);
 		}
@@ -82,7 +83,7 @@ $(document).ready(function() {
 			case "join":
 				highlight = "text-info";
 				break;
-			case "left":
+			case "leave":
 				highlight = "text-warning";
 				break;
 		}
