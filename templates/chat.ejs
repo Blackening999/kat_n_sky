@@ -1,13 +1,17 @@
-<% layout('layout/page') - %>
-<% block('title', "Chat") - %>
+<% layout('layout/page') -%>
+<% block('title', "Chat") -%>
+
+<script src="/vendor/bower_components/socket.io-client/dist/socket.io.js"></script>
 
 <h3 class="text-primary"> Wellcome, <%=user.get('username')%></h3>
 
 <div class="room" id="room">
     <ul class="list-unstyled"></ul>
-</div>
-<div>
     <form>
         <input disabled class="form-control" autocomplete="off" autofocus placeholder="Message...">
     </form>
+</div>
+
+<div>
+
 </div>
