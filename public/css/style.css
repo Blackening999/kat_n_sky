@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+.room {
+	height: 400px;
+	overflow: auto;
+}
+
+.your-message {
+	font-weight: bold;
+}
