@@ -17,7 +17,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right main-navigation">
             <% if (user) { %>
-            <li><a id="signOut" href="#">Sign Out</a></form></li>
+            <li><a href="" onclick="$('<form method=POST action=/logout>').submit();return false">Sign Out</a></form></li>
             <% } else { %>
             <li><a id="signIn" href="#">Sign in</a></li>
             <% } %>

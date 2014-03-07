@@ -1,8 +1,6 @@
 $(document).ready(function() {
-	var input = $('#room input');
-	var ul = $('#room ul');
-	var form = $('#room form');
-	var users = {};
+	var inputArea = $('.input-area'), input = inputArea.find('input'), form = inputArea.find('form'), room = $('.room'),
+		ul = room.find('ul'), users = {};
 
 	var socket = io.connect('', {
 		reconnect: false
@@ -54,16 +52,16 @@ $(document).ready(function() {
 
 	function printStatus(status, type) {
 		$('<li class="' + getMsgColor(type) + '">').append($('<i>' + status + '</i>')).appendTo(ul);
-//		$('<li class="' + getMsgColor(type) + '">').append($('<i>' + status + '</i>')).appendTo(ul);
+		scrollDown();
 	}
 
 	function printMessage(username, message, type) {
-		$('<li>').text(username + "> " + message).appendTo(ul);
-//		if (type == "message") {
-//			$('<li style="color: "+ users[username] +">').text(username + "> " + message).appendTo(ul);
-//		} else {
-//			$('<li class="' + getMsgColor(type) + '">').text(username + "> " + message).appendTo(ul);
-//		}
+		if (type == "message") {
+			$('<li style="color: "+ users[username] +">').text(username + "> " + message).appendTo(ul);
+		} else {
+			$('<li class="' + getMsgColor(type) + '">').text(username + "> " + message).appendTo(ul);
+		}
+		scrollDown();
 	}
 
 	function getMsgColor(type) {
@@ -87,14 +85,15 @@ $(document).ready(function() {
 			case "left":
 				highlight = "text-warning";
 				break;
-		};
+		}
+		;
 		return highlight;
 	}
 
 	function attachColor() {
 		var color = [];
 		do {
-			for (var i = 0; i < 3; i++ ) {
+			for (var i = 0; i < 3; i++) {
 				color[i] = Math.round(Math.random() * 255);
 			}
 		} while (lightColors(color));
@@ -105,9 +104,9 @@ $(document).ready(function() {
 	function lightColors(color) {
 		var spread = 0;
 
-		for ( var i = 0; i < 3; i++ ) {
-			for ( var j = i+1; j < 3; j++ )
-				if ( (color[i] - color[j]) > spread )
+		for (var i = 0; i < 3; i++) {
+			for (var j = i + 1; j < 3; j++)
+				if ((color[i] - color[j]) > spread)
 					return false;
 		}
 		return true;
@@ -122,5 +121,9 @@ $(document).ready(function() {
 			}
 		};
 		return "#" + res.join("");
+	}
+
+	function scrollDown() {
+		room.animate({scrollTop: 10000}, 400);
 	}
 });

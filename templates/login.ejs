@@ -1,6 +1,8 @@
 <% layout('layout/page') -%>
 <% block('title', "Signing in") -%>
 
+<script src="/js/login.js"></script>
+
 <p>Enter name and password in appropriate fields</p>
 
 <form class="form-horizontal login-form" action="/auth/login" method="POST" name="login-form">
@@ -8,14 +10,14 @@
     <label for="input-username" class="col-lg-2 control-label">Name</label>
 
     <div class="col-lg-10">
-      <input name="username" value="name" type="text" class="form-control" id="input-username" placeholder="Enter your name here">
+      <input name="username" value="" type="text" class="form-control" id="input-username" placeholder="Enter your name here">
     </div>
   </div>
   <div class="form-group">
     <label for="input-password" class="col-lg-2 control-label">Password</label>
 
     <div class="col-lg-10">
-      <input name="password" value="pass" type="password" class="form-control" id="input-password" placeholder="Enter your password here">
+      <input name="password" value="" type="password" class="form-control" id="input-password" placeholder="Enter your password here">
     </div>
   </div>
   <div class="form-group">
@@ -26,31 +28,3 @@
   </div>
 </form>
 
-<script>
-    $(document.forms['login-form']).on('submit', function() {
-        var form = $(this);
-
-        $('.error', form).html('');
-        $(":submit", form).button("loading");
-
-        $.ajax({
-            url: "/login",
-            data: form.serialize(),
-            method: "POST",
-            complete: function() {
-                $(":submit", form).button("reset");
-            },
-            statusCode: {
-                200: function() {
-                    form.html("Вы вошли в сайт").addClass('alert-success');
-                    window.location.href = "/chat";
-                },
-                403: function(jqXHR) {
-                    var error = JSON.parse(jqXHR.responseText);
-                    $('.error', form).html(error.message);
-                }
-            }
-        });
-        return false;
-    });
-</script>

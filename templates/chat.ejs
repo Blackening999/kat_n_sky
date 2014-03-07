@@ -1,17 +1,15 @@
 <% layout('layout/page') -%>
 <% block('title', "Chat") -%>
 
-<script src="/vendor/bower_components/socket.io-client/dist/socket.io.js"></script>
+<script src="/js/chat.js"></script>
 
-<h3 class="text-primary"> Wellcome, <%=user.get('username')%></h3>
+<h3 class="text-info"> Wellcome, <%=user.get('username')%></h3>
 
-<div class="room" id="room">
+<div class="room">
     <ul class="list-unstyled"></ul>
-    <form>
-        <input disabled class="form-control" autocomplete="off" autofocus placeholder="Message...">
-    </form>
 </div>
-
-<div>
-
+<div class="input-area">
+    <form>
+        <input disabled class="form-control" autocomplete="off" autofocus placeholder="Сообщение...">
+    </form>
 </div>
