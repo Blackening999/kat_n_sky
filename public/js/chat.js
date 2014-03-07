@@ -58,6 +58,7 @@ $(document).ready(function() {
 
 	function printMessage(username, message, type) {
 		if (type == "message") {
+			users[username] = users[username] ? users[username] : attachColor();
 			$('<li>').text(username + "> " + message).appendTo(ul).end().css("color", users[username]);
 		} else {
 			$('<li class="' + getMsgColor(type) + '">').text(username + "> " + message).appendTo(ul);
