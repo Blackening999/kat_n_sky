@@ -9,7 +9,6 @@ $(document).ready(function() {
 	navPanel.find("#signOut").off("click").on("click", function(e) {
 		e.preventDefault();
 		$.post("/logout").done(function() {
-			return;
 		})
 	});
 });
