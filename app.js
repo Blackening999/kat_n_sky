@@ -12,7 +12,7 @@ app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'templates'));
 app.set('view engine', 'ejs');
 
-app.use(express.favicon());
+app.use(express.favicon(path.join(__dirname, 'public/images/favicon.ico')));
 
 if (app.get('env') == 'development') {
 	app.use(express.logger('dev'));
