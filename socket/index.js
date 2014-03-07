@@ -45,12 +45,14 @@ function loadUser(session, callback) {
 module.exports = function(server) {
 	var io = require('socket.io').listen(server);
 	io.set('origins', '*:*');//localhost
+	io.set("transports", ["xhr-polling"]);
+	io.set("polling duration", 10);
 	io.set('logger', log);
 
 	io.set('authorization', function(handshake, callback) {
 		async.waterfall([
 			function(callback) {
-				// сделать handshakeData.cookies - объектом с cookie
+				// handshake.cookies <- cookies
 				handshake.cookies = cookie.parse(handshake.headers.cookie || '');
 				var sidCookie = handshake.cookies[config.get('session:key')];
 				var sid = connect.utils.parseSignedCookie(sidCookie, config.get('session:secret'));

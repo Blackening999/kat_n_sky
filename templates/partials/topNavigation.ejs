@@ -1,3 +1,4 @@
+<script src="/js/index.js"></script>
 <nav class="navbar navbar-default" role="navigation">
   <ul class="nav navbar-nav">
     <li><a href="/">Main</a></li>
@@ -5,11 +6,11 @@
     <li><a href="/chat">Chat</a></li>
     <% } %>
   </ul>
-  <ul class="nav navbar-nav navbar-right">
+  <ul class="nav navbar-nav navbar-right main-navigation">
     <% if (user) { %>
-    <li><a href="" onclick="$('<form method=POST action=/logout>').submit();return false">Sign Out</a></form></li>
+    <li><a id="signOut" href="#">Sign Out</a></form></li>
     <% } else { %>
-    <li><a href="/login">Sign in</a></li>
+    <li><a id="signIn" href="#">Sign in</a></li>
     <% } %>
   </ul>
 </nav>
