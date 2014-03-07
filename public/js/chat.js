@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 	function printMessage(username, message, type) {
 		if (type == "message") {
-			$('<li style="color: "+ users[username] +">').text(username + "> " + message).appendTo(ul);
+			$("<li style='color: '" + users[username] + "'>").text(username + "> " + message).appendTo(ul);
 		} else {
 			$('<li class="' + getMsgColor(type) + '">').text(username + "> " + message).appendTo(ul);
 		}
@@ -103,7 +103,6 @@ $(document).ready(function() {
 
 	function lightColors(color) {
 		var spread = 0;
-
 		for (var i = 0; i < 3; i++) {
 			for (var j = i + 1; j < 3; j++)
 				if ((color[i] - color[j]) > spread)
@@ -115,10 +114,7 @@ $(document).ready(function() {
 	function decimalToHexString(arr) {
 		var res = [];
 		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] < 0) {
-				var num = 0xFFFFFFFF + arr[i] + 1;
-				res[i] = num.toString(16).toUpperCase();
-			}
+			res[i] = arr[i].toString(16).toUpperCase();
 		};
 		return "#" + res.join("");
 	}
