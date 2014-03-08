@@ -8,28 +8,34 @@ $(document).ready(function() {
 
 	socket
 		.on('message', function(username, message) {
+			playAlert('funk');
 			printMessage(username, message, "message");
 		})
 		.on('leave', function(username) {
+			playAlert('purr');
 			printStatus(username + " left chat", "leave");
 			delete users[username];
 		})
 		.on('join', function(username) {
+			playAlert('glass');
 			users[username] = attachColor();
 			printStatus(username + " entered chat", "join");
 		})
 		.on('connect', function() {
+			playAlert('submarine');
 			printStatus("Connected", "connect");
 			form.on('submit', sendMessage);
 			input.prop('disabled', false);
 		})
 		.on('disconnect', function() {
+			playAlert('bottle');
 			printStatus("Disconnected", "disconnect");
 			form.off('submit', sendMessage);
 			input.prop('disabled', true);
 			this.$emit('error');
 		})
 		.on('logout', function() {
+			playAlert('main');
 			location.href = "/";
 		})
 		.on('error', function(reason) {
@@ -61,6 +67,7 @@ $(document).ready(function() {
 			users[username] = users[username] ? users[username] : attachColor();
 			$('<li>').text(username + "> " + message).appendTo(ul).end().css("color", users[username]);
 		} else {
+			playAlert('funk');
 			$('<li class="' + getMsgColor(type) + '">').text(username + "> " + message).appendTo(ul);
 		}
 		scrollDown();
