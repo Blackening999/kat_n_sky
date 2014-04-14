@@ -54,12 +54,12 @@ schema.statics.authorize = function(username, password, callback) {
 				if (user.checkPassword(password)) {
 					callback(null, user);
 				} else {
-					callback(new AuthError("Wrong Password"));
+					callback(new AuthError("Wrong password"));
 				}
 			} else {
 				// registration should be here
-//				callback(new AuthError("You aren't registered in this application! Only registered members have access to this chat!"));
-				callback(null, null);
+				callback(new AuthError("You aren't registered in this application! Only registered members have access to this chat!"));
+//				callback(null, null);
 //				var user = new User({username: username, password: password});
 //				user.save(function(err) {
 //					if (err) return callback(err);
